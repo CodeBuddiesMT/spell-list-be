@@ -9,7 +9,7 @@ server.use(helmet());
 server.use(express.json())
 
 server.get('/', (req, res) => {
-    res.send('Elisabeth Artistry API')
+    res.send('Spell list API')
 })
 
 module.exports = server
