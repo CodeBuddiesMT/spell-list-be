@@ -15,7 +15,6 @@ const server = express();
 server.use(cors());
 server.use(helmet());
 server.use(express.json());
-
 // Connect to local DB
 mongoose.connect("mongodb://localhost:27017/test", {
   useNewUrlParser: true,
@@ -41,16 +40,16 @@ require("../routes")(server, db);
 // get models
 require("../models")();
 
-// test of models
-Spell.create({
-  name: "testSpellName",
-  description: "testSpellDescription",
-  spell_level: 1,
-});
+// // test of models
+// Spell.create({
+//   name: "testSpellName",
+//   description: "testSpellDescription",
+//   spell_level: 1,
+// });
 
 // export server
-spells = Spell.find().exec();
+// spells = Spell.find().exec();
 
-console.log(spells);
+// console.log(spells);
 
 module.exports = server;

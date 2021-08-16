@@ -1,8 +1,18 @@
 var Spell = require("../models/spell.model");
 
 // Display list of all Spells.
-exports.spell_list = function (req, res) {
-  res.send("NOT IMPLEMENTED: Spell list");
+exports.spell_list = function (req, res, next) {
+  // res.send("NOT IMPLEMENTED: Account list");
+  Spell.find({}, "id name description spell_slot").exec(function (err, list_spells) {
+    if (err) {
+      console.log(err);
+      return next(err);
+    }
+
+    //Successful, so render
+    // console.log("success!", list_spells);
+    res.status(200).send(list_spells.toString());
+  });
 };
 
 // Display detail page for a specific Spell.
