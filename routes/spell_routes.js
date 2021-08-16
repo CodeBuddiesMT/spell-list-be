@@ -1,21 +1,20 @@
+var spell_controller = require("../controllers/spellController");
+
 module.exports = function (app, db) {
   // spells index
-  app.get("/spells", (req, res) => {
-    res.send("spells index");
-  });
+  app.get("/spells", spell_controller.spell_list);
 
-  // show spell
-  app.get("/spells/:spellId", (req, res) => {
-    res.send("show spell");
-  });
+  app.get("/spells/:id", spell_controller.spell_detail);
 
-  // create spell
-  app.post("/spells/:spellId", (req, res) => {
-    res.send("create spell");
-  });
+  app.get("/spells/create", spell_controller.spell_create_get);
 
-  // create spell
-  app.delete("/spells/:spellId", (req, res) => {
-    res.send("delete spell");
-  });
+  app.post("/spells/create", spell_controller.spell_create_post);
+
+  app.get("/spells/:id/delete", spell_controller.spell_delete_get);
+
+  app.post("/spells/:id/delete", spell_controller.spell_delete_post);
+
+  app.get("/spells/:id/update", spell_controller.spell_update_get);
+
+  app.post("/spells/:id/update", spell_controller.spell_update_post);
 };

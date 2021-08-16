@@ -1,21 +1,20 @@
+var account_controller = require("../controllers/accountController");
+
 module.exports = function (app, db) {
   // accounts index
-  app.get("/accounts", (req, res) => {
-    res.send("accounts index");
-  });
+  app.get("/accounts", account_controller.account_list);
 
-  // show account
-  app.get("/accounts/:accountId", (req, res) => {
-    res.send("show account");
-  });
+  app.get("/accounts/:id", account_controller.account_detail);
 
-  // create account
-  app.post("/accounts/:accountId", (req, res) => {
-    res.send("create account");
-  });
+  app.get("/accounts/create", account_controller.account_create_get);
 
-  // create account
-  app.delete("/accounts/:accountId", (req, res) => {
-    res.send("delete account");
-  });
+  app.post("/accounts/create", account_controller.account_create_post);
+
+  app.get("/accounts/:id/delete", account_controller.account_delete_get);
+
+  app.post("/accounts/:id/delete", account_controller.account_delete_post);
+
+  app.get("/accounts/:id/update", account_controller.account_update_get);
+
+  app.post("/accounts/:id/update", account_controller.account_update_post);
 };

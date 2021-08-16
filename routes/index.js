@@ -8,7 +8,7 @@ const spellRoutes = require("./spell_routes");
 module.exports = function (app, db) {
   accountRoutes(app, db);
   characterRoutes(app, db);
-  classRoutes(app.db);
+  classRoutes(app, db);
   itemRoutes(app, db);
   raceRoutes(app, db);
   spellRoutes(app, db);

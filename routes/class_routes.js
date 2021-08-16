@@ -1,21 +1,20 @@
+var class_controller = require("../controllers/classController");
+
 module.exports = function (app, db) {
   // classes index
-  app.get("/classes", (req, res) => {
-    res.send("classes index");
-  });
+  app.get("/classes", class_controller.class_list);
 
-  // show class
-  app.get("/classes/:classId", (req, res) => {
-    res.send("show class");
-  });
+  app.get("/classes/:id", class_controller.class_detail);
 
-  // create class
-  app.post("/classes/:classId", (req, res) => {
-    res.send("create class");
-  });
+  app.get("/classes/create", class_controller.class_create_get);
 
-  // create class
-  app.delete("/classes/:classId", (req, res) => {
-    res.send("delete class");
-  });
+  app.post("/classes/create", class_controller.class_create_post);
+
+  app.get("/classes/:id/delete", class_controller.class_delete_get);
+
+  app.post("/classes/:id/delete", class_controller.class_delete_post);
+
+  app.get("/classes/:id/update", class_controller.class_update_get);
+
+  app.post("/classes/:id/update", class_controller.class_update_post);
 };

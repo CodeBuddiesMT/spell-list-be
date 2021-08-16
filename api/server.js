@@ -35,6 +35,22 @@ server.get("/", (req, res) => {
   res.send("Spell list API");
 });
 
+// get api routes
 require("../routes")(server, db);
+
+// get models
+require("../models")();
+
+// test of models
+Spell.create({
+  name: "testSpellName",
+  description: "testSpellDescription",
+  spell_level: 1,
+});
+
+// export server
+spells = Spell.find().exec();
+
+console.log(spells);
 
 module.exports = server;

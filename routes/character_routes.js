@@ -1,21 +1,20 @@
+var character_controller = require("../controllers/characterController");
+
 module.exports = function (app, db) {
   // characters index
-  app.get("/characters", (req, res) => {
-    res.send("characters index");
-  });
+  app.get("/characters", character_controller.character_list);
 
-  // show character
-  app.get("/characters/:characterId", (req, res) => {
-    res.send("show character");
-  });
+  app.get("/characters/:id", character_controller.character_detail);
 
-  // create character
-  app.post("/characters/:characterId", (req, res) => {
-    res.send("create character");
-  });
+  app.get("/characters/create", character_controller.character_create_get);
 
-  // create character
-  app.delete("/characters/:characterId", (req, res) => {
-    res.send("delete character");
-  });
+  app.post("/characters/create", character_controller.character_create_post);
+
+  app.get("/characters/:id/delete", character_controller.character_delete_get);
+
+  app.post("/characters/:id/delete", character_controller.character_delete_post);
+
+  app.get("/characters/:id/update", character_controller.character_update_get);
+
+  app.post("/characters/:id/update", character_controller.character_update_post);
 };

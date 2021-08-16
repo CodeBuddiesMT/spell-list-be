@@ -1,21 +1,20 @@
+var item_controller = require("../controllers/itemController");
+
 module.exports = function (app, db) {
   // items index
-  app.get("/items", (req, res) => {
-    res.send("items index");
-  });
+  app.get("/items", item_controller.item_list);
 
-  // show item
-  app.get("/items/:itemId", (req, res) => {
-    res.send("show item");
-  });
+  app.get("/items/:id", item_controller.item_detail);
 
-  // create item
-  app.post("/items/:itemId", (req, res) => {
-    res.send("create item");
-  });
+  app.get("/items/create", item_controller.item_create_get);
 
-  // create item
-  app.delete("/items/:itemId", (req, res) => {
-    res.send("delete item");
-  });
+  app.post("/items/create", item_controller.item_create_post);
+
+  app.get("/items/:id/delete", item_controller.item_delete_get);
+
+  app.post("/items/:id/delete", item_controller.item_delete_post);
+
+  app.get("/items/:id/update", item_controller.item_update_get);
+
+  app.post("/items/:id/update", item_controller.item_update_post);
 };
