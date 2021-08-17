@@ -11,7 +11,7 @@ exports.spell_list = function (req, res, next) {
 
     //Successful, so render
     // console.log("success!", list_spells);
-    res.status(200).send(list_spells.toString());
+    res.status(200).send(list_spells);
   });
 };
 
