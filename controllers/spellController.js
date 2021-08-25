@@ -49,3 +49,8 @@ exports.spell_update_get = function (req, res) {
 exports.spell_update_post = function (req, res) {
   res.send("NOT IMPLEMENTED: Spell update POST");
 };
+
+// Handle spell update on POST.
+exports.spell_populate_get = function (req, res) {
+  res.send("HIT THIS URL IF YOU WANT TO FETCH SPELLS FROM EXISTING API, AND POPULATE DB WITH THEM. ");
+};
